@@ -19,12 +19,14 @@
 </template>
 
 <script>
-export default {
 
+export default {
+    name: 'AppHeader'
 }
+
 </script>
 
-<style>
+<style scoped>
     * {
         margin: 0;
         padding: 0;
