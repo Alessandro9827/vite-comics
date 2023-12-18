@@ -1,63 +1,106 @@
-<template>
-  <header>
-    <div class="nav-container">
-        <img src="../assets/img/dc-logo.png" alt="DC logo">
-        <ul class="nav-header">
-           <li>Characters</li>
-           <li>Comics</li>
-           <li>Movies</li>
-           <li>Tv</li>
-           <li>Games</li>
-           <li>Collectibles</li>
-           <li>videos</li>
-           <li>Fans</li>
-           <li>News</li>
-           <li>Shop</li>
-        </ul>
-    </div>
-  </header>
+<template lang="">
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <img src="../assets/img/dc-logo.png" alt="DC comics header logo">
+            </div>
+            <section class="navigation">
+                <ul>
+                    <li v-for='link in navLinks' :class="(link.active) ? 'active' : ''">{{ link.name }} </li>
+                </ul>
+            </section>
+        </div>
+    </header>
+    
 </template>
-
 <script>
-
 export default {
-    name: 'AppHeader'
+    data() {
+        return {
+            name: 'AppHeader',
+            navLinks: [
+                {
+                    name: 'Characters',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Comics',
+                    url: '#',
+                    active: true
+                },
+                {
+                    name: 'Movies',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Tv',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Games',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Collectibles',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Videos',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Fans',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'News',
+                    url: '#',
+                    active: false
+                },
+                {
+                    name: 'Shop',
+                    url: '#',
+                    active: false
+                }
+            ]
+        }
+    },
 }
-
 </script>
-
-<style scoped>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+<style lang="scss" scoped>
+@use '../style/partials/mixins' as *;
+@use '../style/partials/variables' as *;
+header{
+    width: 100%;
+    position: fixed;
+    background-color: $bg-white;
+    img{
+        width: 60px;
     }
-
-    div.nav-container {
-        width: 100vw;
-        height: 100px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #FFFFFF;
+    .wrapper{
+        @include flex(row, space-between,center);
+        div{
+            @include flex(row, space-between,center);
+        }
+        ul{
+            @include flex(row,center,center);
+            list-style: none;
+            li{
+                padding: 2rem 0rem;
+                margin-right: 1.5rem;
+                text-transform: uppercase;
+                font-size: .8rem;
+                
+            }
+        }
     }
-
-    div.nav-container img {
-        height: 70px;
-        width: 70px;
-    }
-
-    div.nav-container ul.nav-header {
-        list-style: none;
-        color: black;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    div.nav-container ul.nav-header li {
-        padding-right: 1rem;
-        text-transform: uppercase;
-    }
-
+}
+    
 </style>
